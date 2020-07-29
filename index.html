@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>毕业纪念册</title>
+	<style type="text/css">
+		body{
+			background-color: #eee;
+			margin:0;
+			padding: 0;
+
+		}
+		div{
+			/*给div一个白色的边框*/
+			border: 10px solid #fff;
+			width:200px;
+			/*将所有的图片都堆叠到一起 */
+			position: absolute;
+			/*让div的变化有一个过渡的过程*/
+			transition: all 0.5s;
+		}
+
+		/*鼠标放上去的时候 图片到最上面 并且放大 */
+		div:hover{
+			z-index: 999;
+			transform: rotate(0deg) scale(1.4)!important;
+		}
+
+		img{
+			/*改变图片的大小*/
+			width: 200px;
+		}
+
+
+	
+
+	</style>
+</head>
+<body>
+	<div><img src="imgs/1.jpg" alt=""></div>
+	<div><img src="imgs/2.jpg" alt=""></div>
+	<div><img src="imgs/3.jpg" alt=""></div>
+	<div><img src="imgs/4.jpg" alt=""></div>
+	<div><img src="imgs/5.jpg" alt=""></div>
+	<div><img src="imgs/6.jpg" alt=""></div>
+	<div><img src="imgs/7.jpg" alt=""></div>
+	<div><img src="imgs/8.jpg" alt=""></div>
+	<div><img src="imgs/9.jpg" alt=""></div>
+	<audio autoplay loop>
+		<source src="music\陈奕迅 - 最佳损友.mp3" type="audio/mpeg"/>
+	</audio>
+
+	<script type="text/javascript">
+		
+
+		//将图片放置在  随机的  点上
+		// 1、拿到所有的图片
+		var divs = document.getElementsByTagName('div');
+		
+		//页面刷新的时候直接执行一次
+		autoplay();
+		// 希望随机拜访照片的代码一直执行 
+		setInterval(autoplay,2000);
+
+
+		function autoplay(){
+
+			for(var i=0;i<divs.length;i++){  //循环了9次
+				// 随机生成一个点
+				// 距离左边的取值范围   0~1166
+				var offset_left = Math.random()*1000+30;
+				var offset_top = Math.random()*200+30;
+
+				//随机生成每一张图片的旋转角度
+				// 需要得到一个-180~180的范围
+				var angle = Math.random()*360-180;
+
+				divs[i].style.left=offset_left+'px';
+				divs[i].style.top = offset_top+'px';
+				divs[i].style.transform='rotate('+angle+'deg)';
+			}
+		}
+
+
+
+	</script>
+</body>
+</html>
